@@ -4,16 +4,19 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import People from './People_list/People_list.js';
+import People_list from './People_list/People_list.js';
+import {generate} from 'randomstring';
+
 class App extends Component {
   state={
     peoples: [
-      {
+      { "key": generate(10),
         FirstName: "Cathy" ,
         LastName: "Pierce",
         Birthday: "9/14/1996",
         Telephone: "200-910-8132"},
       {
+        "key": generate(10),
         FirstName: "Alfonso",
         LastName: "Cooley",
         Birthday: "8/10/1973",
@@ -21,6 +24,7 @@ class App extends Component {
       },
 
       {
+        "key": generate(10),
         FirstName: "Victor",
         LastName: "Gordon",
         Birthday: "8/3/1970",
@@ -29,6 +33,7 @@ class App extends Component {
       },
 
       {
+        "key": generate(10),
         FirstName: "Colleen",
         LastName: "Wright",
         Birthday: "10/28/1967",
@@ -36,6 +41,7 @@ class App extends Component {
       },
 
       {
+        "key": generate(10),
         FirstName: "James",
         LastName: "Johnston",
         Birthday: "5/11/1972",
@@ -43,29 +49,27 @@ class App extends Component {
       },
 
       {
+        "key": generate(10),
         FirstName: "Anna",
         LastName: "Reyes",
         Birthday: "9/10/1975",
         Telephone: "200-707-8670"
       }
            
-    ]
+    ],
+      "Firstname_input": '',
+      "Lastname_input":'',
+      "Birthday_input":'',
+      "Telephone_input":'',
+      "searchkey":''
   }
   render(){
 
     return(
       <div className="App">
         <Container>
-        <header className="App-header text-center">
-        <h1>Address Book App</h1>
-        </header>
-        <div>
-          {this.state.peoples.map(people =>{
-            return< People />
-          })}
-          
-         </div>
-
+          <h1>Address-Book-app</h1>
+          <People_list peoples={this.state.peoples}/>
         </Container>
   
 

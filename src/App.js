@@ -47,6 +47,7 @@ class App extends Component {
         Birthday: "5/11/1972",
         Telephone: "200-645-3176"
       },
+  
 
       {
         "key": generate(10),
@@ -55,6 +56,7 @@ class App extends Component {
         Birthday: "9/10/1975",
         Telephone: "200-707-8670"
       }
+
            
     ],
       "Firstname_input": '',
@@ -81,6 +83,19 @@ class App extends Component {
     this.setState({Telephone_input:''});
   }
 
+  deletePeopleHandler = (index, e) => {
+    let confirm = window.confirm("Do you want to remove this pereson from the address book?");
+   
+    if(confirm){
+    const peoples = [...this.state.peoples];
+    let people_want_to_delete = peoples.findIndex(
+      
+      (people)=>people.key===index);
+       peoples.splice(people_want_to_delete, 1);
+    this.setState({peoples : peoples});
+    }
+
+  }
 
   render(){
 
@@ -88,7 +103,9 @@ class App extends Component {
       <div className="App">
         <Container>
           <h1>Address Book App</h1>
-          <People_list peoples={this.state.peoples}/>
+          <People_list peoples={this.state.peoples}
+          click={this.deletePeopleHandler}/>
+
           <div style={{textAlignVertical: "center",textAlign: "center",}}>
             <br></br> 
             <h2 className="text-center">Add new address here:</h2>

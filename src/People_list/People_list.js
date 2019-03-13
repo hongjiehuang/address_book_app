@@ -17,7 +17,9 @@ function people_list (props) {
                 </Card.Body>
                     <div className="text-center">
                     <Button key={list.key}
-                              className="btn btn-danger"><i class="fa fa-trash"></i> Delete
+                              onClick ={props.click.bind(null,list.key)}
+                              className="btn btn-danger"><i class="fa fa-trash">
+                              </i> Delete
                     </Button>
                     </div>
             </Card>

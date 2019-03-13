@@ -68,7 +68,7 @@ class App extends Component {
     return(
       <div className="App">
         <Container>
-          <h1>Address-Book-app</h1>
+          <h1>Address Book App</h1>
           <People_list peoples={this.state.peoples}/>
         </Container>
   

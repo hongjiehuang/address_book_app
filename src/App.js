@@ -48,13 +48,6 @@ class App extends Component {
         Birthday: "5/11/1972",
         Telephone: "200-645-3176"
       },
-        {
-        "key": generate(10),
-        FirstName: "Anna",
-        LastName: "Reyes",
-        Birthday: "9/10/1975",
-        Telephone: "200-707-8670"
-      },
   
 
       {
@@ -71,7 +64,7 @@ class App extends Component {
       "Lastname_input":'',
       "Birthday_input":'',
       "Telephone_input":'',
-  
+      "SearchKey" : ''
   }
 
 
@@ -105,15 +98,22 @@ class App extends Component {
     }
   }
 
+  searchKeyHandler = (event) => {
+    this.setState({SearchKey : event.target.value});
+   
+}
   render(){
-    const { search } = this.state;
 
     return(
       <div className="App">
         <Container>
           <h1>Address Book App</h1>
-
+          <Form.Group className="text-right" style={{width:"40%"}}>
+            <Form.Control type="text" value ={this.state.SearchKey}
+              placeholder="Search..." onChange={this.searchKeyHandler} />
+          </Form.Group>
           <PeopleList peoples={this.state.peoples}
+          SearchKey={this.state.SearchKey}
           click={this.deletePeopleHandler}/>
 
           <div style={{textAlignVertical: "center",textAlign: "center",}}>

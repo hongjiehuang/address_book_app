@@ -5,7 +5,24 @@ import Button from 'react-bootstrap/Button';
 
 
 function people_list (props) {
+    let keyword = props.SearchKey;
+    let people_list = [];
     let peoples = [...props.peoples];
+    if(keyword !== ''){
+        people_list = peoples.filter( (people) => 
+        people.FirstName.toLowerCase().includes(keyword.toLowerCase()) ||
+        people.LastName.toLowerCase().includes(keyword.toLowerCase()) ||
+        people.Birthday.includes(keyword) ||
+        people.Telephone.includes(keyword) 
+        )
+    }
+    else {
+        people_list = peoples;
+    }
+
+
+
+
     let lists = peoples.map( (list) => 
         <ListGroup.Item key={list.key}>
            <Card className="bg-light border rounded">

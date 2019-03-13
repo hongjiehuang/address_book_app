@@ -89,6 +89,45 @@ class App extends Component {
         <Container>
           <h1>Address Book App</h1>
           <People_list peoples={this.state.peoples}/>
+          <div style={{textAlignVertical: "center",textAlign: "center",}}>
+            <br></br> 
+            <h2 className="text-center">Add new address here:</h2>
+
+            <Form className="text-center" onSubmit = {this.addNewPeopleHandler}>
+              <Form.Group className="col-md-6 ">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" placeholder="Please enter the first name"
+                  value={this.state.Firstname_input}
+                  onChange={(e)=>this.setState({Firstname_input: e.target.value})}/>
+              </Form.Group>
+
+              <Form.Group className="col-md-6">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" placeholder="Please enter the last name"
+                  value={this.state.Lastname_input}
+                  onChange={(e)=>this.setState({Lastname_input: e.target.value})}/>
+              </Form.Group>
+
+              <Form.Group className="col-md-6">
+                <Form.Label>Birthday</Form.Label>
+                <Form.Control type="text" placeholder="Please enter the birthday"
+                  value={this.state.Birthday_input}
+                  onChange={(e)=>this.setState({Birthday_input: e.target.value})}/>
+              </Form.Group>
+
+              <Form.Group className="col-md-6">
+                <Form.Label>Telephone</Form.Label>
+                <Form.Control type="text" placeholder="Please enter the Telephone number"
+                  value={this.state.Telephone_input}
+                  onChange={(e)=>this.setState({Telephone_input: e.target.value})}/>
+              </Form.Group>
+
+              <Form.Group className="submit-button">
+                <Button className="btn btn-info" type="submit">
+                  Submit</Button>
+              </Form.Group>
+            </Form>
+          </div>
         </Container>
   
 

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import People_list from './People_list/People_list.js';
+import PeopleList from './PeopleList/PeopleList.js';
 import {generate} from 'randomstring';
+
 
 class App extends Component {
   state={
+
     peoples: [
       { "key": generate(10),
         FirstName: "Cathy" ,
@@ -47,6 +48,13 @@ class App extends Component {
         Birthday: "5/11/1972",
         Telephone: "200-645-3176"
       },
+        {
+        "key": generate(10),
+        FirstName: "Anna",
+        LastName: "Reyes",
+        Birthday: "9/10/1975",
+        Telephone: "200-707-8670"
+      },
   
 
       {
@@ -63,8 +71,9 @@ class App extends Component {
       "Lastname_input":'',
       "Birthday_input":'',
       "Telephone_input":'',
-      "searchkey":''
+  
   }
+
 
   addNewPeopleHandler = (event) =>
   {
@@ -84,26 +93,27 @@ class App extends Component {
   }
 
   deletePeopleHandler = (index, e) => {
+    
     let confirm = window.confirm("Do you want to remove this pereson from the address book?");
-   
     if(confirm){
-    const peoples = [...this.state.peoples];
+    let peoples = [...this.state.peoples];
     let people_want_to_delete = peoples.findIndex(
-      
-      (people)=>people.key===index);
-       peoples.splice(people_want_to_delete, 1);
-    this.setState({peoples : peoples});
-    }
 
+      (list)=>list.key===index);
+       peoples.splice(people_want_to_delete, 1);
+       this.setState({peoples : peoples});
+    }
   }
 
   render(){
+    const { search } = this.state;
 
     return(
       <div className="App">
         <Container>
           <h1>Address Book App</h1>
-          <People_list peoples={this.state.peoples}
+
+          <PeopleList peoples={this.state.peoples}
           click={this.deletePeopleHandler}/>
 
           <div style={{textAlignVertical: "center",textAlign: "center",}}>

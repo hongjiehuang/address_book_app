@@ -63,6 +63,25 @@ class App extends Component {
       "Telephone_input":'',
       "searchkey":''
   }
+
+  addNewPeopleHandler = (event) =>
+  {
+    event.preventDefault();
+    let newpeople = {
+      key: generate(10),
+      FirstName: this.state.Firstname_input,
+      LastName: this.state.Lastname_input,
+      Birthday: this.state.Birthday_input,
+      Telephone: this.state.Telephone_input
+    };
+    this.setState({peoples:[...this.state.peoples,newpeople]});
+    this.setState({Firstname_input:''});
+    this.setState({Lastname_input:''});
+    this.setState({Birthday_input:''});
+    this.setState({Telephone_input:''});
+  }
+
+
   render(){
 
     return(
